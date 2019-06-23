@@ -1,14 +1,14 @@
 # Laravel CRUD Generator
-
+The basic laravel crud generator.
 
 ## Installation
-```php
+```
 composer required laramab/crudgenerator
 ```
 
 Add crud generator service provider
 
-```php
+```
 Laramab\Crudgenerator\CrudGeneratorServiceProvider::class,
 ```
 
@@ -22,12 +22,6 @@ it will generate ```crud-generator.php``` configuration file which is allow you 
 ```php
 <?php
 
-/**
- * @package laramab/crudgenerator
- *
- * @author Hel Mab
- * @date 2019/06/23
- */
 return [
     /*
     |--------------------------------------------------------------------------
