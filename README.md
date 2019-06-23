@@ -3,7 +3,7 @@ The basic laravel crud generator.
 
 ## Installation
 ```
-composer required laramab/crudgenerator
+composer require laramab/crudgenerator
 ```
 
 Add crud generator service provider
@@ -15,7 +15,7 @@ Laramab\Crudgenerator\CrudGeneratorServiceProvider::class,
 Published configuration
 
 ````php
-php artisan vendor:pushlish --provider="Laramab\Crudgenerator\CrudGeneratorServiceProvider"
+php artisan vendor:publish --provider="Laramab\Crudgenerator\CrudGeneratorServiceProvider"
 ````
 it will generate ```crud-generator.php``` configuration file which is allow you can custom your own route, model, migration and controller directory
 
