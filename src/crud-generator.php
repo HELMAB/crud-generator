@@ -28,7 +28,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-    'path_controller' => 'app/Http/Controllers/Frontend',
+    'path_controller' => 'app/Http/Controllers/Backend',
     /*
     |--------------------------------------------------------------------------
     | Route directory

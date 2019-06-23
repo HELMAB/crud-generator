@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix', '{{modelNamePluralLowerCase}}'], function () {
+Route::group(['prefix' => '{{modelNamePluralLowerCase}}'], function () {
     Route::get('', '{{modelName}}Controller@index')->name('{{modelNamePluralLowerCase}}.index');
     Route::get('store', '{{modelName}}Controller@stroe')->name('{{modelNamePluralLowerCase}}.store');
     Route::get('show', '{{modelName}}Controller@show')->name('{{modelNamePluralLowerCase}}.show');

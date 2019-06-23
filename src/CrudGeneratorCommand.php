@@ -54,6 +54,7 @@ class CrudGeneratorCommand extends Command
         $this->controller($name);
         $this->request($name);
         $this->route($name);
+        $this->info("The $name model was generated successfully");
     }
 
     protected function createDicIfNotExist()
@@ -63,6 +64,7 @@ class CrudGeneratorCommand extends Command
         $pathController = config('crud-generator.path_controller');
         $pathRoute = config('crud-generator.path_route');
         $pathRequest = config('crud-generator.path_request');
+
         if (!File::isDirectory($pathCommand)) {
             File::makeDirectory($pathCommand, 0777, true, true);
         }
@@ -110,7 +112,7 @@ class CrudGeneratorCommand extends Command
         $now = Carbon::now()->format('Y_m_d_hms');
         $name = $now . "_" . strtolower(str_plural($name)) . "_table";
         file_put_contents(app_path("../database/migrations/{$name}.php"), $controllerTemplate);
-        $this->info(app_path("../database/migrations/{$name}.php was created successfully"));
+        $this->info("database/migrations/{$name}.php");
     }
 
     protected function model($name, $columns)
@@ -135,7 +137,7 @@ class CrudGeneratorCommand extends Command
         );
 
         file_put_contents(base_path(config('crud-generator.path_model') . "/{$name}.php"), $modelTemplate);
-        $this->info(base_path(config('crud-generator.path_model') . "/{$name}.php was created successfully"));
+        $this->info(config('crud-generator.path_model') . "/{$name}.php");
     }
 
     protected function controller($name)
@@ -155,7 +157,7 @@ class CrudGeneratorCommand extends Command
         );
 
         file_put_contents(base_path(config('crud-generator.path_controller') . "/{$name}Controller.php"), $controllerTemplate);
-        $this->info(base_path(config('crud-generator.path_controller') . "/{$name}Controller.php was created successfully"));
+        $this->info(config('crud-generator.path_controller') . "/{$name}Controller.php");
     }
 
     protected function route($name)
@@ -172,7 +174,7 @@ class CrudGeneratorCommand extends Command
             $this->getStub('Route')
         );
         file_put_contents(base_path(config('crud-generator.path_route') . "/{$name}.php"), $controllerTemplate);
-        $this->info(base_path(config('crud-generator.path_route') . "/{$name}.php was created successfully"));
+        $this->info(config('crud-generator.path_route') . "/{$name}.php");
     }
 
     protected function request($name)
@@ -184,6 +186,6 @@ class CrudGeneratorCommand extends Command
         );
 
         file_put_contents(base_path(config('crud-generator.path_request') . "/{$name}Request.php"), $requestTemplate);
-        $this->info(base_path(config('crud-generator.path_request') . "/{$name}Request.php was created successfully"));
+        $this->info(config('crud-generator.path_route') . "/{$name}Request.php");
     }
 }
