@@ -2,7 +2,7 @@
 
 namespace Laramab\Crudgenerator;
 
-use Illuminate\Support\Facades\File;
+//use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -28,13 +28,13 @@ class CrudGeneratorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (file_exists(base_path('app/Console/Commands/CrudGeneratorCommand.php'))) {
+        /*if (file_exists(base_path('app/Console/Commands/CrudGeneratorCommand.php'))) {
             File::delete(base_path('app/Console/Commands/CrudGeneratorCommand.php'));
         }
         if (file_exists(base_path('config/crud-generator.php'))) {
             File::delete(base_path('config/crud-generator.php'));
         }
-        File::deleteDirectories(base_path('resources/stubs'));
+        File::deleteDirectories(base_path('resources/stubs'));*/
 
         $this->publishes([
             __DIR__ . '/CrudGeneratorCommand.php' => base_path('app/Console/Commands/CrudGeneratorCommand.php'),
