@@ -19,7 +19,7 @@ class CrudGeneratorCommand extends Command
      */
     protected $signature = 'crud:generator
     {name : Class (singular) for example User}
-    {columns : Class (singular) for example User}';
+    {columns : "title:string, body:text, is_activated:boolean, published_at:dateTime"}';
 
     /**
      * The console command description.
@@ -110,6 +110,7 @@ class CrudGeneratorCommand extends Command
         $now = Carbon::now()->format('Y_m_d_hms');
         $name = $now . "_" . strtolower(str_plural($name)) . "_table";
         file_put_contents(app_path("../database/migrations/{$name}.php"), $controllerTemplate);
+        $this->info(app_path("../database/migrations/{$name}.php was created successfully"));
     }
 
     protected function model($name, $columns)
@@ -134,6 +135,7 @@ class CrudGeneratorCommand extends Command
         );
 
         file_put_contents(base_path(config('crud-generator.path_model') . "/{$name}.php"), $modelTemplate);
+        $this->info(base_path(config('crud-generator.path_model') . "/{$name}.php was created successfully"));
     }
 
     protected function controller($name)
@@ -153,6 +155,7 @@ class CrudGeneratorCommand extends Command
         );
 
         file_put_contents(base_path(config('crud-generator.path_controller') . "/{$name}Controller.php"), $controllerTemplate);
+        $this->info(base_path(config('crud-generator.path_controller') . "/{$name}Controller.php was created successfully"));
     }
 
     protected function route($name)
@@ -169,6 +172,7 @@ class CrudGeneratorCommand extends Command
             $this->getStub('Route')
         );
         file_put_contents(base_path(config('crud-generator.path_route') . "/{$name}.php"), $controllerTemplate);
+        $this->info(base_path(config('crud-generator.path_route') . "/{$name}.php was created successfully"));
     }
 
     protected function request($name)
@@ -180,5 +184,6 @@ class CrudGeneratorCommand extends Command
         );
 
         file_put_contents(base_path(config('crud-generator.path_request') . "/{$name}Request.php"), $requestTemplate);
+        $this->info(base_path(config('crud-generator.path_request') . "/{$name}Request.php was created successfully"));
     }
 }
