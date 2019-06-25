@@ -1,4 +1,5 @@
 # Laravel CRUD Generator
+![Output](src/assets/img/output.png)
 The basic laravel crud generator.
 
 ## Installation
@@ -70,10 +71,7 @@ return [
 ];
 ```
 
-## Usage
-
+## Example command
 ```php
 php artisan crud:generator Post "title:string, body:text, is_active:boolean, published_at:dateTime"
 ```
-
-![Output](src/assets/img/output.png)
