@@ -75,3 +75,5 @@ return [
 ```php
 php artisan crud:generator Post "title:string, body:text, is_active:boolean, published_at:dateTime"
 ```
+
+![Output](src/assets/img/output.png)
