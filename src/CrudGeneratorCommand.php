@@ -198,6 +198,6 @@ class CrudGeneratorCommand extends Command
         );
 
         file_put_contents(base_path(config('crud-generator.path_request') . "/{$name}Request.php"), $requestTemplate);
-        $this->info(config('crud-generator.path_route') . "/{$name}Request.php");
+        $this->info(config('crud-generator.path_request') . "/{$name}Request.php");
     }
 }
