@@ -91,9 +91,15 @@ class CrudGeneratorCommand extends Command
     {
         $fields = explode(", ", $columns);
         $planText = '';
-        foreach ($fields as $field) {
+        foreach ($fields as $index => $field) {
             $column = explode(':', $field);
-            $planText .= '$table->' . $column[1] . '("' . $column[0] . '");' . PHP_EOL;
+            if ($index == 0) {
+                $planText .= '$table->' . $column[1] . '("' . $column[0] . '");' . "\n";
+            } elseif ($index == count($fields) - 1) {
+                $planText .= "\t\t\t" . '$table->' . $column[1] . '("' . $column[0] . '");';
+            } else {
+                $planText .= "\t\t\t" . '$table->' . $column[1] . '("' . $column[0] . '");' . "\n";
+            }
         }
 
         $controllerTemplate = str_replace(
@@ -109,8 +115,8 @@ class CrudGeneratorCommand extends Command
             ],
             $this->getStub('Migration')
         );
-        $now = Carbon::now()->format('Y_m_d_hms');
-        $name = $now . "_" . strtolower(str_plural($name)) . "_table";
+        $now = Carbon::now()->format('Y_m_d_His');
+        $name = $now . "_create_" . strtolower(str_plural($name)) . "_table";
         file_put_contents(app_path("../database/migrations/{$name}.php"), $controllerTemplate);
         $this->info("database/migrations/{$name}.php");
     }
@@ -119,9 +125,15 @@ class CrudGeneratorCommand extends Command
     {
         $fields = explode(", ", $columns);
         $planText = '';
-        foreach ($fields as $field) {
+        foreach ($fields as $index => $field) {
             $column = explode(':', $field);
-            $planText .= '"' . $column[0] . '",' . PHP_EOL;
+            if ($index == 0) {
+                $planText .= "'$column[0]'," . "\n";
+            } elseif ($index == count($fields) - 1) {
+                $planText .= "\t\t" . "'$column[0]',";
+            } else {
+                $planText .= "\t\t" . "'$column[0]'," . "\n";
+            }
         }
 
         $modelTemplate = str_replace(
