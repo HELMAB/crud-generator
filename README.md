@@ -15,7 +15,7 @@ Laramab\Crudgenerator\CrudGeneratorServiceProvider::class,
 
 Published configuration
 
-````php
+````
 php artisan vendor:publish --provider="Laramab\Crudgenerator\CrudGeneratorServiceProvider"
 ````
 it will generate ```crud-generator.php``` configuration file which is allow you can custom your own route, model, migration and controller directory
