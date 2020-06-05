@@ -1,0 +1,25 @@
+{
+    "name": "laramab/crudgenerator",
+    "description": "Basic laravel crud generator.",
+    "authors": [
+        {
+            "name": "HEL Mab",
+            "email": "mabhelitc@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Laramab\\Crudgenerator\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laramab\\Crudgenerator\\CrudGeneratorServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}

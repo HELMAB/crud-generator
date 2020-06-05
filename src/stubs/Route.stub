@@ -1,0 +1,8 @@
+<?php
+
+Route::group(['prefix' => '{{modelNamePluralLowerCase}}'], function () {
+    Route::post('store', '{{modelName}}Controller@stroe')->name('{{modelNamePluralLowerCase}}.store');
+    Route::post('show', '{{modelName}}Controller@show')->name('{{modelNamePluralLowerCase}}.show');
+    Route::post('delete', '{{modelName}}Controller@delete')->name('{{modelNamePluralLowerCase}}.delete');
+    Route::post('datatable', '{{modelName}}Controller@datatable')->name('{{modelNamePluralLowerCase}}.datatable');
+});

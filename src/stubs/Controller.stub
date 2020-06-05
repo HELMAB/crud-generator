@@ -1,0 +1,91 @@
+<?php
+
+namespace {{controllerNamespace}};
+
+use App\Http\Controllers\Controller;
+use App\Models\{{modelName}};
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
+
+class {{modelName}}Controller extends Controller
+{
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            // set your own validation
+            // columns or...
+        ]);
+
+        try {
+            DB::beginTransaction();
+            if (isset($request->{{paramUuid}}_uuid)) {
+                ${{modelNameSingularLowerCase}} = {{modelName}}::where('uuid', $request->{{paramUuid}}_uuid)->first();
+                if (!(${{modelNameSingularLowerCase}} instanceof {{modelName}})) {
+                    return {{responseErrorFormat}}([
+                        'message_en' => 'Can not found {{modelLabelEn}}.',
+                        'message_km' => 'រកមិនឃើញ{{modelLabelKm}}នេះទេ។',
+                    ]);
+                }
+                ${{modelNameSingularLowerCase}}->update($request->all());
+            } else {
+                ${{modelNameSingularLowerCase}} = {{modelName}}::create($request->all());
+            }
+            DB::commit();
+            return {{responseSuccessFormat}}(${{modelNameSingularLowerCase}});
+        } catch(\Exception $exception) {
+            DB::rollback();
+            return message_error($exception);
+        }
+    }
+
+    public function show(Request $request)
+    {
+        $this->validate($request, [
+            '{{paramUuid}}_uuid' => 'required|uuid',
+        ]);
+
+        ${{modelNameSingularLowerCase}} = {{modelName}}::where([
+            'uuid' => $request->{{paramUuid}}_uuid,
+        ])->first();
+
+        if (!(${{modelNameSingularLowerCase}} instanceof {{modelName}})) {
+            return {{responseErrorFormat}}([
+                'message_en' => 'Can not found {{modelLabelEn}}.',
+                'message_km' => 'រកមិនឃើញ{{modelLabelKm}}ឡើយ។',
+            ]);
+        }
+
+        return {{responseSuccessFormat}}(${{modelNameSingularLowerCase}});
+    }
+
+    public function delete(Request $request)
+    {
+        $this->validate($request, [
+            '{{paramUuid}}_uuid' => 'required|uuid',
+        ]);
+
+        ${{modelNameSingularLowerCase}} = {{modelName}}::where([
+            'uuid' => $request->{{paramUuid}}_uuid,
+        ])->first();
+
+        if (!(${{modelNameSingularLowerCase}} instanceof {{modelName}})) {
+            return {{responseErrorFormat}}([
+                'message_en' => 'Can not found {{modelLabelEn}}.',
+                'message_km' => 'រកមិនឃើញ{{modelLabelKm}}ឡើយ។',
+            ]);
+        }
+
+        ${{modelNameSingularLowerCase}}->delete();
+
+        return {{responseSuccessFormat}}([]);
+    }
+
+    public function datatable()
+    {
+        ${{modelNamePluralLowerCase}} = {{modelName}}::select('*');
+
+        return DataTables::of(${{modelNamePluralLowerCase}})
+            ->make(true);
+    }
+}
