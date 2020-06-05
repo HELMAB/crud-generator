@@ -73,5 +73,5 @@ return [
 
 ## Example command
 ```php
-php artisan crud:generator Post "title:string, body:text, is_active:boolean, published_at:dateTime"
+php artisan crud:generator Gender "ភេទ" "gender" "name_km:string, name_en:string"
 ```
