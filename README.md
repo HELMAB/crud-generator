@@ -1,4 +1,7 @@
 # Laravel CRUD Generator
+
+[![Latest Stable Version](https://poser.pugx.org/laramab/crudgenerator/v)](//packagist.org/packages/laramab/crudgenerator) [![Total Downloads](https://poser.pugx.org/laramab/crudgenerator/downloads)](//packagist.org/packages/laramab/crudgenerator) [![Latest Unstable Version](https://poser.pugx.org/laramab/crudgenerator/v/unstable)](//packagist.org/packages/laramab/crudgenerator) [![License](https://poser.pugx.org/laramab/crudgenerator/license)](//packagist.org/packages/laramab/crudgenerator)
+
 ![Output](src/assets/img/output.png)
 The basic laravel crud generator.
 
